@@ -24,14 +24,26 @@ int peak(vector<int> &A)
       else
         start = mid + 1;
     }
-    else if ((mid == 0 && A[mid + 1] < A[mid]) || (mid == A.size() - 1 && A[mid - 1] < A[mid]))
-      return mid;
+    if (mid == 0)
+    {
+      if (A[mid] > A[mid + 1])
+        return mid;
+      else
+        start = mid + 1;
+    }
+    if (mid == n - 1)
+    {
+      if (A[mid] > A[mid - 1])
+        return mid;
+      else
+        end = mid - 1;
+    }
   }
   return -1;
 }
 
 int main()
 {
-  vector<int> A = {1, 3, 5, 7, 8, 8, 9, 10};
+  vector<int> A = {2, 4};
   cout << peak(A);
 }
